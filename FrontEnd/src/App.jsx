@@ -24,6 +24,7 @@ const TaskApp = () => {
     fetchTasks();
   }, []);
 
+  //Fetch All Task
   const fetchTasks = async () => {
     try {
       const response = await axios.get(API_URL);
@@ -52,6 +53,8 @@ const TaskApp = () => {
     setShowModal(false);
   };
 
+
+  //Save the Task
   const saveTask = async () => {
     try {
       if (editId) {
@@ -66,12 +69,14 @@ const TaskApp = () => {
     }
   };
 
+  //Edit or update the Task
   const editTask = (task) => {
     setEditId(task.id);
     setNewTask(task);
     setShowModal(true);
   };
 
+  //Delete the Task
   const deleteTask = async (id) => {
     try {
       await axios.delete(`${API_URL}/${id}`);
